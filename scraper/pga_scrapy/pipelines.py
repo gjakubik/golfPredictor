@@ -16,7 +16,7 @@ class PgaScrapyPipeline:
     """Scrapy Pipeline class to handle the parsed stat pages"""
 
     def process_item(self, item, spider):
-        PATH = "C:/Users/sjrus/Documents/code/projects/pga-scraper/pga_scrapy/output/"
+        PATH = "PUT FILE LOCATION" # make sure to put slash at the end
 
         foldername = get_valid_filename(item.pop("stat_group"))
         filename = get_valid_filename(item.pop("stat_name"))
