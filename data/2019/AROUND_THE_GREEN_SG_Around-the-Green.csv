@@ -24,8 +24,8 @@ T21,T22,Cameron Smith,79,0.286,15.172,53
 23,18,Sungjae Im,122,0.285,28.51,100
 24,24,Ernie Els,51,0.282,8.454,30
 25,25,Alex Noren,63,0.28,12.023,43
-T26,T26,Rod Pampling,56,0.278,11.417,41
 T26,T26,Branden Grace,76,0.278,12.511,45
+T26,T26,Rod Pampling,56,0.278,11.417,41
 28,9,Louis Oosthuizen,71,0.27,12.954,48
 29,29,Ian Poulter,65,0.267,11.756,44
 30,30,Rory Sabbatini,97,0.263,19.987,76
@@ -41,15 +41,15 @@ T36,T37,Brian Harman,91,0.245,17.377,71
 40,39,Xander Schauffele,77,0.211,11.199,53
 41,41,Jonathan Byrd,55,0.205,7.375,36
 42,42,Wes Roach,69,0.197,9.646,49
-T43,T43,Kiradech Aphibarnrat,65,0.194,8.736,45
 T43,T43,Matt Fitzpatrick,54,0.194,7.189,37
+T43,T43,Kiradech Aphibarnrat,65,0.194,8.736,45
 45,45,Brian Stuard,98,0.19,14.652,77
 46,46,C.T. Pan,84,0.18,10.805,60
 47,47,Scott Langley,78,0.179,11.465,64
 48,49,Danny Willett,63,0.154,7.7,50
 49,50,Michael Kim,61,0.15,6.772,45
-T50,T51,Dylan Frittelli,83,0.149,10.152,68
 T50,T51,Denny McCarthy,89,0.149,10.248,69
+T50,T51,Dylan Frittelli,83,0.149,10.152,68
 52,53,Seamus Power,80,0.147,9.095,62
 53,48,Lucas Glover,94,0.145,11.722,81
 54,T66,Marc Leishman,76,0.135,7.719,57
@@ -106,8 +106,8 @@ T97,T97,Patrick Rodgers,55,0.029,1.286,45
 105,107,J.B. Holmes,78,0.012,0.594,48
 106,108,Henrik Stenson,58,0.01,0.414,42
 107,119,Gary Woodland,87,0.008,0.532,65
-T108,T110,Mackenzie Hughes,80,0.006,0.399,66
 T108,T110,Ryan Blaum,90,0.006,0.403,72
+T108,T110,Mackenzie Hughes,80,0.006,0.399,66
 T108,T110,Luke List,66,0.006,0.309,55
 111,113,Dominic Bozzelli,73,0.005,0.238,49
 112,114,J.J. Spaun,90,0.003,0.205,64
@@ -115,8 +115,8 @@ T113,115,Russell Henley,78,-0.005,-0.281,61
 T113,102,Abraham Ancer,93,-0.005,-0.375,71
 115,109,Bryson DeChambeau,75,-0.016,-1.072,66
 116,116,Scott Stallings,82,-0.017,-1.182,68
-T117,T117,Cam Davis,76,-0.021,-1.197,57
 T117,T117,Nate Lashley,70,-0.021,-1.154,55
+T117,T117,Cam Davis,76,-0.021,-1.197,57
 119,120,Ollie Schniederjans,77,-0.025,-1.495,61
 120,121,Daniel Berger,70,-0.029,-1.688,59
 121,122,Sergio Garcia,53,-0.051,-1.927,38
@@ -148,8 +148,8 @@ T141,T143,Anirban Lahiri,73,-0.139,-8.221,59
 147,150,Curtis Luck,65,-0.157,-6.891,44
 148,151,Sam Ryder,76,-0.161,-9.642,60
 149,152,Josh Teater,73,-0.162,-8.608,53
-T150,T153,J.J. Henry,58,-0.163,-6.691,41
 T150,T153,Tom Hoge,98,-0.163,-11.765,72
+T150,T153,J.J. Henry,58,-0.163,-6.691,41
 152,155,Freddie Jacobson,53,-0.178,-7.128,40
 153,162,Kevin Kisner,97,-0.186,-13.214,71
 154,156,Jhonattan Vegas,75,-0.19,-11.6,61
