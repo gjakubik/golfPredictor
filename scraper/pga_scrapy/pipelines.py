@@ -22,7 +22,6 @@ class PgaScrapyPipeline:
 
     def process_item(self, item, spider):
         year = item.pop('year')
-
         year_dir = os.path.join(DATA_DIR, year)
 
         if not os.path.exists(year_dir):
