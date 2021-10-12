@@ -13,7 +13,7 @@ class PgaStatsSpider(scrapy.Spider):
 
     def __init__(self, year=DEFAULT_YEAR, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.year = year
+        self.year = int(year)
 
     def parse(self, response):
         links = response.xpath(
@@ -21,7 +21,11 @@ class PgaStatsSpider(scrapy.Spider):
 
         for link in links:
             stats_page = link.get()
+            print("stats_page: ", stats_page)
             yield response.follow(stats_page, callback=self.parse_stats)
+
+        # parse next year's OWGR once
+        yield response.follow(f'/stats/stat.186.y{self.year + 1}.html', callback=self.parse_stats_table)
 
     def parse_stats(self, response):
         relevant_links = set([f"/stats/stat.{stat_num}.html" for stat_num in [
@@ -29,20 +33,16 @@ class PgaStatsSpider(scrapy.Spider):
             '02564',
             '02674',
             '02568',
-            '02569',
-            '186'
+            '02569'
         ]])
 
-        links = [
-            link.get() for link in response.xpath("*//div[contains(@class, 'table-content')]//a/@href")
-            if link.get() in relevant_links
-        ]
-
-        # add OWGR
-        links += '/stats/stat.186.html'
+        links = response.xpath("*//div[contains(@class, 'table-content')]//a/@href") 
 
         for link in links:
-            stats_table = link[:-5] + f".y{self.year}.html"
+            if link.get() not in relevant_links:
+                continue
+
+            stats_table = link.get()[:-5] + f".y{self.year}.html"
             yield response.follow(stats_table, callback=self.parse_stats_table)
 
     def parse_stats_table(self, response):
