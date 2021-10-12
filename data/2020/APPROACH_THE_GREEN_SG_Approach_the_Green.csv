@@ -43,8 +43,8 @@ T37,37,Xander Schauffele,70,0.366,22.299,61
 42,44,Shane Lowry,44,0.354,12.742,36
 43,45,Keegan Bradley,68,0.351,19.98,57
 44,46,Joel Dahmen,79,0.336,21.178,63
-T45,T40,Abraham Ancer,74,0.335,18.735,56
 T45,47,Kyle Stanley,57,0.335,14.397,43
+T45,T40,Abraham Ancer,74,0.335,18.735,56
 T47,T48,Bud Cauley,65,0.322,18.7,58
 T47,T48,Brooks Koepka,40,0.322,12.238,38
 49,51,Scott Stallings,71,0.309,16.375,53
@@ -79,8 +79,8 @@ T63,T66,Chris Baker,53,0.238,7.855,33
 78,81,Ian Poulter,48,0.137,5.196,38
 79,82,Scott Piercy,66,0.134,6.721,50
 80,83,Robby Shelton,75,0.127,7.233,57
-T81,T84,Carlos Ortiz,72,0.122,7.961,65
 T81,T84,Graeme McDowell,48,0.122,4.53,37
+T81,T84,Carlos Ortiz,72,0.122,7.961,65
 83,87,Sepp Straka,70,0.119,7.382,62
 T84,T88,Si Woo Kim,78,0.115,6.896,60
 T84,T88,Max Homa,70,0.115,6.579,57
@@ -89,8 +89,8 @@ T84,T88,Max Homa,70,0.115,6.579,57
 88,101,Sungjae Im,94,0.106,8.406,79
 89,92,Aaron Wise,49,0.104,3.524,34
 90,80,Patrick Reed,74,0.102,6.639,65
-T91,T93,Matthew Wolff,74,0.099,6.208,63
 T91,T93,Rickie Fowler,44,0.099,4.04,41
+T91,T93,Matthew Wolff,74,0.099,6.208,63
 93,95,Josh Teater,43,0.095,2.577,27
 94,96,Matt Fitzpatrick,54,0.094,4.125,44
 95,97,Michael Gellerman,46,0.088,2.639,30
@@ -106,8 +106,8 @@ T101,T105,Chase Seiffert,56,0.043,1.531,36
 105,119,Cameron Smith,64,0.02,1.074,55
 106,110,Ben Martin,38,0.016,0.35,22
 107,111,Joseph Bramlett,57,0.015,0.583,39
-T108,T112,Tyler McCumber,57,0.014,0.532,38
 T108,T112,Matt Kuchar,56,0.014,0.68,49
+T108,T112,Tyler McCumber,57,0.014,0.532,38
 110,114,Xinjun Zhang,77,0.005,0.323,59
 111,115,Adam Schenk,78,0.001,0.072,55
 112,116,Sung Kang,73,0.0,-0.013,62
