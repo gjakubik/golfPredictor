@@ -18,7 +18,7 @@ def main():
 
     for df in year_dfs:
         df.reset_index()
-        print(df)
+        print(df["YEAR"])
 
     # TODO: then concatenate all their dataframes
     concat_df = pd.concat(year_dfs, axis=0)
