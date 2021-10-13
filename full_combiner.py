@@ -33,7 +33,7 @@ def main():
 
     print(year_dfs)
     # TODO: then concatenate all their dataframes
-    concat_df = pd.concat(year_dfs, axis=0)
+    concat_df = pd.concat(year_dfs, axis=0, ignore_index=True)
 
     print(concat_df)
     pass
