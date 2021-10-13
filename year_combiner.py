@@ -34,4 +34,4 @@ def combineYear(data_dir):
         df_owgr = pd.merge(df1, df_owgr, on = "PLAYER NAME")
         df_owgr.set_index("PLAYER NAME", inplace = True)
 
-        return df_owgr
+    return df_owgr
