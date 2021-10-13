@@ -28,6 +28,7 @@ def main():
 
     for df in year_dfs:
         df = df.loc[~df.index.duplicated(keep='first')]
+        print(df.columns)
         print(df)
 
     print(year_dfs)
