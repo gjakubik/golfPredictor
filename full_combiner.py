@@ -23,7 +23,7 @@ def main():
         indicies = [i for i in range(start, end)]
         df["INDEX"] = indicies
         df.set_index("INDEX", inplace=True)
-        print(df.head(20).index.toList)
+        print(df.head(20).index.tolist())
         start = end
 
     # TODO: then concatenate all their dataframes
