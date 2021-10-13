@@ -23,9 +23,10 @@ def main():
         indicies = [i for i in range(start, end)]
         df["INDEX"] = indicies
         df.set_index("INDEX", inplace=True)
-        print(df)
         start = end
 
+    for df in year_dfs:
+        print(df)
     # TODO: then concatenate all their dataframes
     concat_df = pd.concat(year_dfs, axis=0)
 
