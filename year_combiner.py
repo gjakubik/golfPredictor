@@ -36,6 +36,5 @@ def combineYear(data_dir, year):
         # merge 1 and 2
         # TODO: Change to outer join if needed
         df_owgr = pd.merge(df1, df_owgr, on = "PLAYER NAME")
-        df_owgr.set_index("PLAYER NAME", inplace = True)
 
     return df_owgr

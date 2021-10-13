@@ -16,9 +16,14 @@ def main():
         print(year_dir.name)
         year_dfs.append(combineYear(os.path.join(data_dir, year_dir.name), year_dir.name))
 
+    start = 0
+
     for df in year_dfs:
-        df.reset_index()
-        print(df["YEAR"])
+        end = start + len(df)
+        indicies = [i for i in range(start, end)]
+        df["INDEX"] = indicies
+        df.set_index("INDEX", inplace=True)
+        start = end
 
     # TODO: then concatenate all their dataframes
     concat_df = pd.concat(year_dfs, axis=0)
