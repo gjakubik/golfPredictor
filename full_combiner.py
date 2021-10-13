@@ -18,10 +18,10 @@ def main():
 
     start = 0
 
-    for df in year_dfs:
+    for i, df in enumerate(year_dfs):
         end = start + len(df)
         indicies = [i for i in range(start, end)]
-        df["INDEX"] = indicies
+        df[f"INDEX_{i}"] = indicies
         df.reset_index()
         df.set_index("INDEX", inplace=True)
         start = end
