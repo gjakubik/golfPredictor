@@ -16,47 +16,35 @@ class PgaStatsSpider(scrapy.Spider):
         self.year = int(year)
 
     def parse(self, response):
-        links = response.xpath(
-            "*//ul[contains(@class, 'nav-tabs-drop')]/li/a[not(@data-toggle)]/@href")[1:8]  # exclude the first and last url as those don't matter
+        links = [f"/stats/stat.{stat_num}.y{self.year}.html" for stat_num in [
+            "02674",    # SG_TeeToGreen (SG_OffTheTee, SG_Approach, SG_Around), Measured Rounds
+            "02564",    # SG_Putting
+            "130",      # Scrambling_%,
+            "120",      # Adjusted_Scoring_Avg
+            "102",      # Driving_Acc_% (> some threshold of rounds)
+            "103",      # GIR_%
+            "101",      # Avg_Driving_Dist
+            "138",      # Top_10s
+        ]]
 
         for link in links:
-            stats_page = link.get()
-            print("stats_page: ", stats_page)
-            yield response.follow(stats_page, callback=self.parse_stats)
+            yield response.follow(link, callback=self.parse_stats_table)
 
-        # parse next year's OWGR once
+        # OWGR - avg_points
+        yield response.follow(f'/stats/stat.186.y{self.year}.html', callback=self.parse_stats_table)
         yield response.follow(f'/stats/stat.186.y{self.year + 1}.html', callback=self.parse_stats_table)
 
-    def parse_stats(self, response):
-        relevant_links = set([f"/stats/stat.{stat_num}.html" for stat_num in [
-            '02675',
-            '02564',
-            '02674',
-            '02568',
-            '02569'
-        ]])
-
-        links = response.xpath("*//div[contains(@class, 'table-content')]//a/@href") 
-
-        for link in links:
-            if link.get() not in relevant_links:
-                continue
-
-            stats_table = link.get()[:-5] + f".y{self.year}.html"
-            yield response.follow(stats_table, callback=self.parse_stats_table)
-
     def parse_stats_table(self, response):
-        pga_stats = {}
+        pga_stats = {
+            'year': self.year,
+            'stat_group': response.xpath("*//ul[contains(@class, 'nav-tabs-drop')]//li[@class='active']/a/text()").get(),
+            'stat_name': response.xpath("*//div[@class='header']/h1/text()").get(),
+            'stat_table': response.xpath("*//table[@id='statsTable']").get()
+        }
 
-        pga_stats['stat_group'] = response.xpath(
-            "*//ul[contains(@class, 'nav-tabs-drop')]//li[@class='active']/a/text()").get()
-
-        pga_stats['stat_name'] = response.xpath(
-            "*//div[@class='header']/h1/text()").get()
-
-        pga_stats['stat_table'] = response.xpath("*//table[@id='statsTable']").get()
-
-        pga_stats['year'] = self.year
+        # special case for owgr (since we grab both current and next year)
+        if 'stat.186.y' in response.url:
+            pga_stats['owgr_year'] = int(response.url.split('stat.186.y')[1][:4])
 
         yield pga_stats
 
