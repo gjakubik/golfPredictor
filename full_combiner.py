@@ -3,3 +3,21 @@
 import pandas as pd
 import os
 import re
+
+from year_combiner import combineYear
+
+def main():
+
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+
+    for year_dir in os.scandir(data_dir):
+        print(year_dir)
+
+    # TODO: Run year combiner on each year 
+    pass
+
+    # TODO: then concatenate all their dataframes
+    pass
+
+if __name__ == '__main__':
+    main()

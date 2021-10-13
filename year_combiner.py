@@ -12,9 +12,8 @@ import pandas as pd
 import sys
 import os
 
-def combineYear(year):
-
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", year)
+#Function that combines all of the data in a year into one pandas dataframe joined on name and returns it
+def combineYear(data_dir, year):
 
     # read rankings
     df_owgr = pd.read_csv(os.path.join(data_dir, "POINTSRANKINGS_Official_World_Golf_Ranking.csv"))
@@ -31,8 +30,8 @@ def combineYear(year):
                 del df1[key]
 
         # merge 1 and 2
+        # TODO: Change to outer join if needed
         df_owgr = pd.merge(df1, df_owgr, on = "PLAYER NAME")
         df_owgr.set_index("PLAYER NAME", inplace = True)
 
-    # write final table
-    df_owgr.to_csv(os.path.join(data_dir, "combined.csv"))
+        return df_owgr
