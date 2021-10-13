@@ -17,6 +17,7 @@ def main():
         year_dfs.append(combineYear(os.path.join(data_dir, year_dir.name), year_dir.name))
 
     for df in year_dfs:
+        df.reset_index()
         print(df)
 
     # TODO: then concatenate all their dataframes
