@@ -18,7 +18,11 @@ def main():
 
     for df in year_dfs:
         print(df)
+
     # TODO: then concatenate all their dataframes
+    concat_df = pd.concat(year_dfs, axis=0)
+
+    print(concat_df)
     pass
 
 if __name__ == '__main__':
