@@ -22,6 +22,7 @@ def main():
         end = start + len(df)
         indicies = [i for i in range(start, end)]
         df["INDEX"] = indicies
+        df.reset_index()
         df.set_index("INDEX", inplace=True)
         start = end
 
