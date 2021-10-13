@@ -14,7 +14,7 @@ def main():
     year_dfs = []
     for year_dir in os.scandir(data_dir):
         print(year_dir.name)
-        year_dfs.append(combineYear(data_dir, year_dir.name))
+        year_dfs.append(combineYear(os.path.join(data_dir, year_dir.name)))
 
     for df in year_dfs:
         print(df)

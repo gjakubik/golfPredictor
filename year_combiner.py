@@ -13,10 +13,10 @@ import sys
 import os
 
 #Function that combines all of the data in a year into one pandas dataframe joined on name and returns it
-def combineYear(data_dir, year):
+def combineYear(data_dir):
 
     # read rankings
-    df_owgr = pd.read_csv(os.path.join(data_dir, year, "POINTSRANKINGS_Official_World_Golf_Ranking.csv"))
+    df_owgr = pd.read_csv(os.path.join(data_dir, "POINTSRANKINGS_Official_World_Golf_Ranking.csv"))
 
     for filename in os.listdir(data_dir):
         if not filename.endswith(".csv") or filename == "POINTSRANKINGS_Official_World_Golf_Ranking.csv":
