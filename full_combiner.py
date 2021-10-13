@@ -10,12 +10,14 @@ def main():
 
     data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
+    # Run year combiner on each year
+    year_dfs = []
     for year_dir in os.scandir(data_dir):
         print(year_dir.name)
+        year_dfs.append(combineYear(data_dir, year_dir.name))
 
-    # TODO: Run year combiner on each year 
-    pass
-
+    for df in year_dfs:
+        print(df)
     # TODO: then concatenate all their dataframes
     pass
 
