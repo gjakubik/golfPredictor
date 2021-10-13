@@ -27,6 +27,7 @@ def main():
         start = end
 
     for df in year_dfs:
+        df = df.loc[~df.index.duplicated(keep='first')]
         print(df)
     # TODO: then concatenate all their dataframes
     concat_df = pd.concat(year_dfs, axis=0)
