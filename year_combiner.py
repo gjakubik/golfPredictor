@@ -13,7 +13,7 @@ import sys
 import os
 
 #Function that combines all of the data in a year into one pandas dataframe joined on name and returns it
-def combineYear(data_dir):
+def combineYear(data_dir, year):
 
     # read rankings
     df_owgr = pd.read_csv(os.path.join(data_dir, "POINTSRANKINGS_Official_World_Golf_Ranking.csv"))
@@ -24,6 +24,10 @@ def combineYear(data_dir):
 
         df1 = pd.read_csv(os.path.join(data_dir, filename))
 
+        # Add the year as a column
+        years = [year for i in range(len(df1))]
+        df1['YEAR'] = years
+
         # delete unofficial rankings to avoid confusion
         for key, value in df1.iteritems():
             if "RANK" in key:
@@ -32,6 +36,6 @@ def combineYear(data_dir):
         # merge 1 and 2
         # TODO: Change to outer join if needed
         df_owgr = pd.merge(df1, df_owgr, on = "PLAYER NAME")
-        df_owgr.set_index("PLAYER NAME", inplace = True)
+        df_owgr.set_index(("PLAYER NAME", "YEAR"), inplace = True)
 
     return df_owgr
