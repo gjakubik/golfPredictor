@@ -29,7 +29,7 @@ def main():
     for df in year_dfs:
         df = df.loc[~df.index.duplicated(keep='first')]
         print(df.columns)
-        print(df)
+        #print(df)
 
     print(year_dfs)
     # TODO: then concatenate all their dataframes
