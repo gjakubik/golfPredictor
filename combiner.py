@@ -47,7 +47,7 @@ table_filter = {
     },
     "POINTSRANKINGS_Official_World_Golf_Ranking_NEXT.csv": {
         "PLAYER NAME": "name",
-        "AVG POINTS": "owgr_points_next_avg"
+        "RANK THIS WEEK": "next_years_rank"
     }
 }
 
@@ -69,6 +69,11 @@ def combine_year(data_dir):
         
         new_df = pd.read_csv(file.path)
 
+        # seemingly there is a bug in pandas, so this is needed
+        if "RANK THIS WEEK" in table_filter[file.name]:
+            table_filter[file.name][new_df.columns[0]] = table_filter[file.name]["RANK THIS WEEK"]
+            del table_filter[file.name]["RANK THIS WEEK"]
+        
         # throw out un-needed columns
         columns_to_keep = list(table_filter[file.name].keys())
         new_df = new_df[columns_to_keep]
