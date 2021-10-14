@@ -81,6 +81,9 @@ def combine_year(data_dir):
         # rename columns
         new_df.rename(columns=table_filter[file.name], inplace=True)
 
+        # remove any names which are duplicates (looking at you Richard Johnson's)
+        new_df.drop_duplicates(subset=['name'], keep=False, inplace=True)
+
         # merge with running dataframe
         if res_df is None:
             res_df = new_df
