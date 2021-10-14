@@ -36,8 +36,10 @@ class PgaScrapyPipeline:
         if 'owgr_year' in item:
             if item['owgr_year'] == item['year']:
                 filename_prefix += "_CURRENT"
-            else:
-                filename_prefix += "_NEXT"
+            elif item['owgr_year'] == (item['year'] + 1):
+                filename_prefix += "_YEAR_PLUS_ONE"
+            elif item['owgr_year'] == (item['year'] + 2):
+                filename_prefix += "_YEAR_PLUS_TWO"
 
         saved_file_name = os.path.join(year_dir, filename_prefix + '.csv')
 

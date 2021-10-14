@@ -37,10 +37,12 @@ for year in range(START_YEAR, END_YEAR):
 
 dataframes = []
 
-for i, yearly_ranking in enumerate(yearly_rankings[:-1]):
-    next_yearly_ranking = yearly_rankings[i+1].rename(columns={"current_rank": "next_rank"})
+for i, yearly_ranking in enumerate(yearly_rankings[:-2]):
+    next_year_rank = yearly_rankings[i+1].rename(columns={"current_rank": "rank_year_plus_one"})
+    year_after_rank = yearly_rankings[i+2].rename(columns={"current_rank": "rank_year_plus_two"})
     
-    new_df = pd.merge(yearly_ranking, next_yearly_ranking, on="name")
+    new_df = pd.merge(yearly_ranking, next_year_rank, on="name")
+    new_df = pd.merge(new_df, year_after_rank, on="name")
     new_df['year'] = START_YEAR + i
 
     dataframes.append(new_df)
@@ -49,4 +51,4 @@ res_df = pd.concat(dataframes, ignore_index=True)
 
 if res_df is not None:
     print("Saving to CSV")
-    res_df.to_csv("owgr_2003-2021.csv")
+    res_df.to_csv(f"owgr_{START_YEAR}-{END_YEAR}.csv")

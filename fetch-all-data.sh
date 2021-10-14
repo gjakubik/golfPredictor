@@ -17,4 +17,4 @@ for year in `seq $start $end`; do
 done;
 
 echo "Combining Data"
-./combiner.py data 2&> /dev/null
+./combiner.py data

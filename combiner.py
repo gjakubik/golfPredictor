@@ -45,9 +45,9 @@ table_filter = {
         "PLAYER NAME": "name",
         "AVG POINTS": "owgr_points_current_avg"
     },
-    "POINTSRANKINGS_Official_World_Golf_Ranking_NEXT.csv": {
+    "POINTSRANKINGS_Official_World_Golf_Ranking_YEAR_PLUS_TWO.csv": {
         "PLAYER NAME": "name",
-        "RANK THIS WEEK": "next_years_rank"
+        "RANK THIS WEEK": "owgr_rank_year_plus_two"
     }
 }
 

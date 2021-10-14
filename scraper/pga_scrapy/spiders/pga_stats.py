@@ -31,8 +31,9 @@ class PgaStatsSpider(scrapy.Spider):
             yield response.follow(link, callback=self.parse_stats_table)
 
         # OWGR - avg_points
-        yield response.follow(f'/stats/stat.186.y{self.year}.html', callback=self.parse_stats_table)
-        yield response.follow(f'/stats/stat.186.y{self.year + 1}.html', callback=self.parse_stats_table)
+        years = [self.year, self.year+1, self.year+2]
+        for year in years:
+            yield response.follow(f'/stats/stat.186.y{year}.html', callback=self.parse_stats_table)
 
     def parse_stats_table(self, response):
         pga_stats = {
