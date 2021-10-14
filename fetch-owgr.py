@@ -10,10 +10,10 @@ conn = http.client.HTTPSConnection("www.pgatour.com", context=ssl._create_unveri
 
 yearly_rankings = []
 
-START_YEAR = 2003
-END_YEAR = 2022
+START_YEAR = 2004
+END_YEAR = 2021
 
-for year in range(START_YEAR, END_YEAR):
+for year in range(START_YEAR, END_YEAR + 1):
     print("Fetching data for year:", year)
 
     url = f"/stats/stat.186.y{year}.html"
@@ -38,11 +38,11 @@ for year in range(START_YEAR, END_YEAR):
 dataframes = []
 
 for i, yearly_ranking in enumerate(yearly_rankings[:-2]):
-    next_year_rank = yearly_rankings[i+1].rename(columns={"current_rank": "rank_year_plus_one"})
+    #next_year_rank = yearly_rankings[i+1].rename(columns={"current_rank": "rank_year_plus_one"})
     year_after_rank = yearly_rankings[i+2].rename(columns={"current_rank": "rank_year_plus_two"})
     
-    new_df = pd.merge(yearly_ranking, next_year_rank, on="name")
-    new_df = pd.merge(new_df, year_after_rank, on="name")
+    #new_df = pd.merge(yearly_ranking, next_year_rank, on="name")
+    new_df = pd.merge(yearly_ranking, year_after_rank, on="name")
     new_df['year'] = START_YEAR + i
 
     dataframes.append(new_df)
@@ -51,4 +51,4 @@ res_df = pd.concat(dataframes, ignore_index=True)
 
 if res_df is not None:
     print("Saving to CSV")
-    res_df.to_csv(f"owgr_{START_YEAR}-{END_YEAR}.csv")
+    res_df.to_csv(f"owgr_{START_YEAR}-{END_YEAR - 2}.csv")
