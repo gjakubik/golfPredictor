@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
 
-# with help of - https://stackoverflow.com/questions/54383305/merge-two-csv-files-based-on-a-data-from-the-first-column
-# with help of - https://www.geeksforgeeks.org/update-column-value-of-csv-in-python/
-# with help of - https://www.geeksforgeeks.org/adding-new-column-to-existing-dataframe-in-pandas/
-# with help of - https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.insert.html
-# with help of - https://stackoverflow.com/questions/13411544/delete-a-column-from-a-pandas-dataframe
-# with help of - https://stackoverflow.com/questions/54655304/how-to-iterate-over-a-column-headers-and-row-values-in-pandas
-# with help of - https://stackoverflow.com/questions/10377998/how-can-i-iterate-over-files-in-a-given-directory
-
 import pandas as pd
-import sys
 import os
+import sys
 
 
 table_filter = {
@@ -60,7 +52,6 @@ table_filter = {
 }
 
 
-#Function that combines all of the data in a year into one pandas dataframe joined on name and returns it
 def combine_year(data_dir):
     res_df = None
 
@@ -90,26 +81,38 @@ def combine_year(data_dir):
             res_df = new_df
         else:
             res_df = pd.merge(res_df, new_df, on="name")
-
+    
+    res_df['year'] = os.path.basename(data_dir)
     return res_df
 
 
 def main():
     if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} DATA_YEAR_DIR", file=sys.stderr)
+        print(f"Usage: {sys.argv[0]} DATA_DIR", file=sys.stderr)
         sys.exit(1)
-    
+
     data_dir = sys.argv[1]
-    out_file = os.path.join(data_dir, "combined.csv")
+    outfile = os.path.join(data_dir, "combined.csv")
 
-    # combine
-    print("Combining Files")
-    res = combine_year(data_dir)
+    # Run year combiner on each year
+    dataframes = []
+    for year_dir in os.scandir(data_dir):
+        if year_dir.name == "combined.csv":
+            print("Noticed combined.csv file... Skipping", file=sys.stderr)
+            continue
 
-    # export
-    print("Exporting Result to:", out_file)
-    res.to_csv(out_file)
+        if not os.path.isdir(year_dir):
+            print(year_dir.name, "is not a directory, skipping...", file=sys.stderr)
+            continue
+
+        df = combine_year(year_dir.path)
+        dataframes.append(df)
+    
+    res_df = pd.concat(dataframes, ignore_index=True)
+    
+    print("Saving combined file to:", outfile)
+    res_df.to_csv(outfile)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
