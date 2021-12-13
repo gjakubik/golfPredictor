@@ -24,7 +24,7 @@ Golf tournament outcome prediction models based on data scraped from the [PGA To
         ```
     - Collect world golf ranking data (from 2004 to 2019), and save to [`owgr_2004-2019.csv`](owgr_2004-2019.csv)
         ```
-        ./fetch-owgr.py
+        $ ./fetch-owgr.py
         ```
 ### Run Models
 1. Start jupyter notebook server
